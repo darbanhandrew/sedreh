@@ -1,0 +1,25 @@
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link active">
+      <i class="nav-icon fa fa-circle blinking"></i>
+      <p>
+        آخرین وضعیت
+        <i class="right fa fa-angle-left"></i>
+      </p>
+    </a>
+    <ul class="nav nav-treeview">
+      <li class="nav-item">
+        <a href="#" class="nav-link active">
+          <i class="fa fa-circle-o nav-icon"></i>
+          <p>وضعیت کلی</p>
+        </a>
+      </li>
+      {% for map in monitoringMaps %}
+      <li class="nav-item">
+        <a href="#" class="nav-link" onclick="TogglePollutantLayer('{% url 'getMonitoringMap' map.id %}')">
+          <i class="fa fa-circle-o nav-icon"></i>
+          <p>{{ map.pollutant.full_name }} ({{ map.pollutant.title }})</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </li>

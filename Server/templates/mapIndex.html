@@ -1,0 +1,87 @@
+{% extends "panel.html" %}
+{% load render_partial %}
+{% load static %}
+
+{% block title %}سامانه پایش آلودگی سدره{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'my/dist/css/ol.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+    <div id="map" class="map">
+      <div style="position: relative;">
+        <div class="ol-control ol-unselectable ol-draw">
+          <button type="button" class="ol-draw-none" onclick="ClearMapfromDrawLayer()">
+            <ion-icon src="{% static 'my/icons/cursor.svg' %}"></ion-icon>
+          </button>
+          <button type="button" class="ol-draw-point" onclick="AddDrawInteraction('Point')">
+            <ion-icon name="location-sharp"></ion-icon>
+          </button>
+          <button type="button" class="ol-draw-polygon" onclick="AddDrawInteraction('Polygon')">
+            <ion-icon src="{% static 'my/icons/polygon.svg' %}"></ion-icon>
+          </button>
+          <button type="button" class="ol-draw-rectangle" onclick="AddDrawInteraction('Box')">
+            <ion-icon src="{% static 'my/icons/rectangle.svg' %}"></ion-icon>
+          </button>
+          <button type="button" class="ol-draw-kmz" accept=".kml" onclick="$('#input-kml').click()" id='draw-kml'>
+            <ion-icon src="{% static 'my/icons/kml-file.svg' %}"></ion-icon>
+          </button>
+          <input type="file" accept=".kml,.kmz" id="input-kml" hidden>
+        </div>
+        <div class="ol-control ol-unselectable ol-basemap">
+          <button type="button" id="baseMapeButton" onclick="ToggleSelectBaseMap()">
+            <ion-icon src="{% static 'my/icons/map.svg' %}"></ion-icon>
+            <!-- <ion-icon src="{% static 'my/icons/satellite.svg' %}"></ion-icon> -->
+          </button>
+        </div>
+        <div class="ol-control ol-unselectable ol-mylayers">
+          <button type="button" onclick="$('#layer-items').slideToggle('slow')">
+            <ion-icon src="{% static 'my/icons/layers.svg' %}"></ion-icon>
+          </button>
+        </div>
+        <div class="ol-control ol-unselectable ol-export-map">
+          <button type="button" id="export-map">
+            <ion-icon src="{% static 'my/icons/camera.svg' %}"></ion-icon>
+          </button>
+          <a id="export-png-download" download="map.png"></a>
+        </div>
+        {% render_partial 'getLayersList' %}
+        <div id="mouse-position" class="ol-control ol-coordinate"></div>
+      </div>
+    </div>
+        <form>
+      <label for="radius">radius size</label>
+      <input id="radius" type="range" min="1" max="15" step="0.1" value="5"/>
+      <label for="blur">blur size</label>
+      <input id="blur" type="range" min="1" max="100" step="1" value="15"/>
+    <div>
+        <input type="radio" id="aerosol" name="contact" value="aerosol" onchange="handleChange(this);">
+        <label for="aerosol">aerosol</label>
+
+        <input type="radio" id="co" name="contact" value="co" onchange="handleChange(this);">
+        <label for="co">co</label>
+
+        <input type="radio" id="formaldehyde" name="contact" value="formaldehyde" onchange="handleChange(this);">
+        <label for="formaldehyde">formaldehyde</label>
+                <input type="radio" id="methane" name="contact" value="methane" onchange="handleChange(this);">
+        <label for="methane">methane</label>
+                <input type="radio" id="no2" name="contact" value="no2" onchange="handleChange(this);">
+        <label for="no2">no2</label>
+                        <input type="radio" id="ozone" name="contact" value="ozone" onchange="handleChange(this);">
+        <label for="ozone">ozone</label>
+                        <input type="radio" id="so2" name="contact" value="so2" onchange="handleChange(this);">
+        <label for="so2">so2</label>
+    </div>    </form>
+{% endblock %}
+
+{% block js %}
+  <script>
+    function get_new_feature_modal_body() {
+      modal_new_order(`{% render_partial 'partial_view' %}`)
+    }
+  </script>
+  <script src="{% static 'my/dist/js/ol.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.6.1/jszip.min.js"></script>
+  <script src="{% static 'my/dist/js/map.js' %}"></script>
+{% endblock %}

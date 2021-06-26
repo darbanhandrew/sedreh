@@ -1,0 +1,18 @@
+<div class="ol-control ol-unselectable card-body" id="layer-items" style="display: none;">
+    <ul class="todo-list">
+      <li class="item-layer">
+        <input type="checkbox" onclick="ToggleFavoritePointLayer(checked)" checked>
+        <span class="text">موقعیت های من</span>
+      </li>
+      <li class="item-layer">
+        <input type="checkbox" onclick="ToggleFavoriteRegionLayer(checked)" checked>
+        <span class="text">محدوده های من</span>
+      </li>
+      {% for group in positionGroups %}
+      <li class="item-layer">
+        <input type="checkbox" onclick="TogglePosintionLayer('{{ group.name }}', '{% url 'getPositionGroup' group.id %}', checked)">
+        <span class="text">{{ group.name }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+</div>

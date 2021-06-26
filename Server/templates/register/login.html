@@ -1,0 +1,77 @@
+{% load static %}
+{% load render_partial %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% block title %}{% endblock %}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="#">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/font-awesome/css/font-awesome.min.css' %}">
+  <!-- Ionicons -->
+  <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static 'plugins/iCheck/flat/blue.css' %}">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="{% static 'plugins/morris/morris.css' %}">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="{% static 'plugins/jvectormap/jquery-jvectormap-1.2.2.css' %}">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="{% static 'plugins/datepicker/datepicker3.css' %}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker-bs3.css' %}">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="{% static 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
+  <!-- bootstrap rtl -->
+  <link rel="stylesheet" href="{% static 'dist/css/bootstrap-rtl.min.css' %}">
+  <!-- template rtl version -->
+  <link rel="stylesheet" href="{% static 'dist/css/custom-style.css' %}">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{% static 'plugins/select2/select2.min.css' %}">
+  <!-- Persian Data Picker -->
+  <link rel="stylesheet" href="{% static 'dist/css/persian-datepicker.min.css' %}">
+  {% block css %}{% endblock %}
+  <!-- template sedreh panel version -->
+  <link rel="stylesheet" href="{% static 'my/dist/css/my-style.css' %}">
+</head>
+<body data-login-register-auto-height="true">
+<div class="container mt-5">
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        {% block content %}
+<!--Login-->
+<div class="card w-100 h-100">
+  <div class="card-header">
+    <h3 class="card-title">ورود</h3>
+    <!-- /.card-tools -->
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    به وبسایت صدره خوش آمدید.
+       <form method="POST">
+    {% csrf_token %}
+    {{ login_form }}
+    <button class="btn btn-primary" type="submit">ورود</button>
+  </form>
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+    <a href="/register">ثبت نام</a>
+  </div>
+  <!-- /.card-footer -->
+</div>
+{% endblock %}
+    </div>
+</div>
+
+</div>
+</body>
+</html>

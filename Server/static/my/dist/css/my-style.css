@@ -1,0 +1,307 @@
+.blinking {
+    animation: blinkingIcon 1s infinite;
+}
+@keyframes blinkingIcon {
+    0%  {  color: #f00;      }
+    49% {  color: #f00;      }
+    50% {  color: transparent; }
+    99% {  color: transparent; }
+    100%{  color: #f00;      }
+}
+/* --------------------------   scroll   -------------------------- */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #a3f9ff;
+}
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+/* --------------------------   end scroll   -------------------------- */
+/*
+ * Component: Sidebar Mini
+ */
+ @media (min-width: 992px) {
+    .sidebar-mini.sidebar-collapse .info {
+        display: none;
+    }
+}
+  
+/* ---------------------------   colorize   -------------------------- */
+
+/* زمینه */
+.sidebar-dark-primary {
+    background-color: #23374d;
+}
+.sidebar-light-primary {
+    background-color: #fcfcfc;
+}
+
+/* وقتی رو موردی کلیک میشه */
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link:active,
+.sidebar-dark-primary .nav-sidebar > .nav-item.menu-open > .nav-link,
+.sidebar-dark-primary .nav-sidebar > .nav-item.menu-open > .nav-link:focus,
+.sidebar-dark-primary .nav-sidebar > .nav-item.menu-open > .nav-link:hover {
+    color: #0e153a;
+    background-color: #22d1ee;
+}
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link:active,
+.sidebar-light-primary .nav-sidebar > .nav-item.menu-open > .nav-link,
+.sidebar-light-primary .nav-sidebar > .nav-item.menu-open > .nav-link:focus,
+.sidebar-light-primary .nav-sidebar > .nav-item.menu-open > .nav-link:hover {
+    color: #f1f4f6;
+    background-color: #5ac8d8;
+}
+
+/* وقتی موس میره روی موارد */
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link:hover,
+.sidebar-dark-primary .nav-treeview > .nav-item > .nav-link:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link:hover,
+.sidebar-light-primary .nav-treeview > .nav-item > .nav-link:hover {
+    color: #011349;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* آخرین وضعیت */
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active:focus {
+    color: #23374d;
+    background-color: #22d1ee;
+}
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active,
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active:focus {
+    color: #23374d;
+    background-color: #22d1ee;
+}
+
+/* زیر گروه آخرین وضعیت */
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-treeview {
+    background: transparent;
+}
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-treeview {
+    background: transparent;
+}
+
+/* رنگ موارد داخل نوار کناری */
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link:focus,
+.sidebar-dark-primary .sidebar a {
+    color: #eeeeee;
+}
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link:focus,
+.sidebar-light-primary .sidebar a {
+    color: #3186b2;
+}
+
+.sidebar-dark-primary .sidebar a:hover {
+    text-decoration: none;
+}
+.sidebar-light-primary .sidebar a:hover {
+    text-decoration: none;
+}
+
+/* رنگ زیر گروه ها */
+.sidebar-dark-primary .nav-treeview > .nav-item > .nav-link:focus,
+.sidebar-dark-primary .nav-treeview > .nav-item > .nav-link {
+    color: #e2f3f5;
+}
+.sidebar-light-primary .nav-treeview > .nav-item > .nav-link:focus,
+.sidebar-light-primary .nav-treeview > .nav-item > .nav-link {
+    color: #061541;
+}
+
+/* وقتی رو زیر گروه کلیک میشه */
+.sidebar-dark-primary .nav-treeview > .nav-item > .nav-link:active,
+.sidebar-dark-primary .nav-treeview > .nav-item.menu-open > .nav-link,
+.sidebar-dark-primary .nav-treeview > .nav-item.menu-open > .nav-link:focus {
+    color: #0e153a;
+    background-color: #36bdd4;
+}
+.sidebar-light-primary .nav-treeview > .nav-item > .nav-link:active,
+.sidebar-light-primary .nav-treeview > .nav-item.menu-open > .nav-link,
+.sidebar-light-primary .nav-treeview > .nav-item.menu-open > .nav-link:focus {
+    color: #f1f4f6;
+    background-color: #77c5d1;
+}
+
+/* وضعیت کلی */
+.sidebar-dark-primary .nav-treeview > .nav-item > .nav-link.active,
+.sidebar-dark-primary .nav-treeview > .nav-item > .nav-link.active:hover {
+    color: #343a40;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.sidebar-light-primary .nav-treeview > .nav-item > .nav-link.active,
+.sidebar-light-primary .nav-treeview > .nav-item > .nav-link.active:hover {
+    color: #343a40;
+    background-color: rgba(182, 182, 182, 0.9);
+}
+
+/* رنگ تاریخ و اسم کاربر */
+.sidebar-dark-primary .sidebar .info {
+    text-align: center;
+    color: #f5f5f5;
+}
+.sidebar-light-primary .sidebar .info {
+    text-align: center;
+    color: #011349;
+}
+
+/* سایه اطراف نوار کناری */
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active {
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+}
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+}
+
+/* رنگ نوار بالا */
+.navbar-dark {
+    background-color: #1089ff !important;
+}
+.navbar-light {
+    background-color: #1089ff !important;
+}
+
+/* رنگ موارد نوار بالا */
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+
+/* ---------------------------   end colorize   -------------------------- */
+/* -------------------------------   map   ------------------------------- */
+.map {
+    height: 580px;
+    width: 100%;
+}
+.ol-control {
+    z-index: 1;
+}
+.ol-mylayers {
+    top: 2.5em;
+    right: .5em;
+}
+.ol-export-map {
+    top: 4.5em;
+    right: .5em;
+}
+.ol-attribution {
+    left: .5em;
+    right: auto;
+}
+.ol-draw {
+    top: 4.5em;
+    left: .5em;
+}
+.ol-draw .ol-draw-none {
+    border-radius: 2px 2px 0 0;
+}
+.ol-draw .ol-draw-point,.ol-draw-polygon,.ol-draw-rectangle {
+    border-radius: 0 0 0 0;
+}
+.ol-draw .ol-draw-kmz {
+    border-radius: 0 0 2px 2px;
+}
+.ol-basemap {
+    top: .5em;
+    right: .5em;
+}
+.ol-full-screen {
+    right: auto;
+    top: auto;
+    left: .5em;
+    bottom: 2.5em;
+}
+.ol-coordinate {
+    bottom: 0;
+    right: 35em;
+    position: fixed;
+    border-radius: 15px 15px 0 0;
+    background-color: rgb(99 99 99 / 49%);
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+.ol-coordinate:hover {
+    background-color: rgb(99 99 99 / 49%);
+}
+/* -----------------------------   end map   ----------------------------- */
+.sedreh-logo {
+    padding: 0;
+}
+.img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.user-img {
+    height: 4.5rem;
+    width: auto;
+    /* border: 2px solid rgb(8, 192, 115); */
+}
+.profile-setting-icon {
+    position: relative;
+    top: 3.75rem;
+    left: 35px;
+}
+.info-item {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.nav-empty-header {
+    padding: .5rem 1rem .5rem 1rem !important;
+}
+.sidebar {
+    height: 100%;
+}
+.modal-footer>:not(:last-child) {
+    margin-left: .25rem;
+}
+.label-with-btn {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+}
+.item-layer {
+    background: #64e7c2 !important;
+    padding: 4px !important;
+    border-left: none !important;
+}
+#layer-items {
+    background-color: white;
+    right: 3em;
+    top: 2.7em;
+}

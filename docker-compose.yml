@@ -1,0 +1,96 @@
+version: '3'
+
+services:
+  db:
+    image: kartoza/postgis:13-3.1
+    container_name: db
+    volumes: 
+      - db_sedreh:/var/lib/postgresql
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASS=postgres
+      - POSTGRES_DBNAME=postgres
+    ports:
+      - "5434:5434"
+
+  pgAdmin:
+    image: dpage/pgadmin4:5.0
+    container_name: pgAdmin
+    ports: 
+      - "8000:80"
+    volumes: 
+      - pgAdmin_sedreh:/var/lib/pgadmin
+    restart: always
+    environment: 
+      - PGADMIN_DEFAULT_EMAIL=sedreh@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=12
+    depends_on: 
+      - db
+
+  geoserver:
+    image: kartoza/geoserver:2.18.0
+    container_name: geoserver
+    ports: 
+      - "8081:8081"
+    restart: always
+    environment:
+      - GEOSERVER_ADMIN_USER=sedreh
+      - GEOSERVER_ADMIN_PASSWORD=ABcd1234!@
+    volumes: 
+      - geoserver_sedreh:/opt/geoserver/data_dir
+      - geoserver_footprints_sedreh:/opt/footprints_dir
+      - geoserver_gwc_sedreh:/opt/geoserver/data_dir/gwc
+      - geoserver_letsencrypt_sedreh:/etc/letsencrypt
+      - geoserver_fonts_sedreh:/opt/fonts
+      - ./Server/media/geoserver:/ServerData
+    depends_on: 
+      - db
+      
+  web:
+    build:
+       context: ./FastAPI/.
+    command: uvicorn main:app --reload --port 1376 --host 0.0.0.0
+    volumes:
+      - ./FastAPI:/code/
+    ports:
+      - 1376:1376
+
+  app:
+    build: 
+      context: ./Server/.
+    container_name: App
+    ports: 
+      - 80:8000
+    volumes: 
+      - ./Server:/home/App
+    environment: 
+      - DB_HOST=db
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DB_PORT=5432
+      - GEOSERVER_USERNAME=sedreh
+      - GEOSERVER_PASSWORD=ABcd1234!@
+      - GEOSERVER_WORKSPACE=sedreh
+      - GEOSERVER_NAMESPACE=localhost
+      - GEOSERVER_HOST=geoserver
+      - GEOSERVER_PORT=8081
+      - GEOSERVER_HOST_IP=localhost
+    command: >
+      sh -c "python manage.py wait_for_db &&
+             python manage.py makemigrations news help geometries register ordering notification monitoring geoserver --noinput&& 
+             python manage.py migrate --noinput&&
+             python manage.py runserver 0.0.0.0:8000"
+    depends_on: 
+      - db
+      - geoserver
+
+volumes: 
+  db_sedreh:
+  pgAdmin_sedreh:
+  geoserver_sedreh:
+  geoserver_footprints_sedreh:
+  geoserver_gwc_sedreh:
+  geoserver_letsencrypt_sedreh:
+  geoserver_fonts_sedreh:
